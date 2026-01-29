@@ -1,5 +1,6 @@
 import express from "express";
 import { databaseConnection, databaseSync } from "./database/connection.js";
+import "./database/model/relation.js";
 export const bootstrap = async () => {
   const app = express();
   await databaseConnection();
