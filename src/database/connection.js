@@ -10,6 +10,7 @@ export const sequelize = new Sequelize(
   databaseUser,
   databasePassword,
   {
+    host: "localhost",
     dialect: "mysql",
     dialectOptions: {
       socketPath: "/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock",
