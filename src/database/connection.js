@@ -3,6 +3,7 @@ import {
   databaseName,
   databaseUser,
   databasePassword,
+  host
 } from "../../config/env.service.js";
 
 export const sequelize = new Sequelize(
@@ -10,7 +11,7 @@ export const sequelize = new Sequelize(
   databaseUser,
   databasePassword,
   {
-    host: "localhost",
+    host: host,
     dialect: "mysql",
     dialectOptions: {
       socketPath: "/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock",
