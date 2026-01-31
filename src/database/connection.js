@@ -1,22 +1,38 @@
 import { Sequelize } from "sequelize";
-import {
-  databaseName,
-  databaseUser,
-  databasePassword,
-  host,
-} from "../../config/env.service.js";
+// import {
+//   databaseName,
+//   databaseUser,
+//   databasePassword,
+//   host,
+// } from "../../config/env.service.js";
+
+import dotenv from "dotenv";
+dotenv.config();
+// const mysql = require("mysql2");
+
 
 export const sequelize = new Sequelize(
-  databaseName,
-  databaseUser,
-  databasePassword,
+  process.env.MYSQL_DATABASE,
+  process.env.MYSQLUSER,
+  process.env.MYSQLPASSWORD,
   {
-    host: host,
+    host: process.env.MYSQLHOST,
     dialect: "mysql",
 
     logging: false,
   },
 );
+// export const sequelize = new Sequelize(
+//   databaseName,
+//   databaseUser,
+//   databasePassword,
+//   {
+//     host: host,
+//     dialect: "mysql",
+
+//     logging: false,
+//   },
+// );
 
 export const databaseConnection = async () => {
   try {

@@ -8,4 +8,6 @@ const jwtSecret = process.env.JWT_SECRET;
 const port = process.env.PORT;
 const host = process.env.DATABASE_HOST;
 
+
+
 export { databaseName, databaseUser, databasePassword, jwtSecret, port, host };
