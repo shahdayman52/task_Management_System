@@ -5,7 +5,6 @@ import userRouter from "./modules/user/user.controller.js";
 import taskRouter from "./modules/task/task.controller.js";
 import logRouter from "./modules/log/log.contoller.js";
 import { apiRateLimit } from "./middleware/rateLimit.middleware.js";
-import { port } from "../config/env.service.js";
 
 export const bootstrap = async () => {
   const app = express();
@@ -24,7 +23,8 @@ export const bootstrap = async () => {
       stack: error.stack,
     });
   });
-  app.listen(port, () => {
-    console.log(`ruuning on port ${port}`);
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
   });
 };
