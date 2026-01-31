@@ -40,8 +40,9 @@ export const updateTask = async (taskId, data, userId) => {
 export const deleteTask = async (taskId, userId) => {
   const task = await GetTaskById(taskId, userId);
   if (!task) throw new Error("Task not found");
-  await task.destroy();
   await createLog({ action: "DELETE_LOG", userId, taskId });
+
+  await task.destroy();
 
   return true;
 };

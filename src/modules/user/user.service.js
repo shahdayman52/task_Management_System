@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { userModel } from "../../database/model/user.model.js";
 import { jwtSecret } from "../../../config/env.service.js";
+import { createLog } from "../log/log.service.js";
 
 export const createUser = async (data) => {
   const { name, email, password } = data;
@@ -32,6 +33,8 @@ export const authenticateUser = async (data) => {
   });
   const userData = user.toJSON();
   delete userData.password;
+    await createLog({ action: "LOGGED_IN", userId:userData.id });
+
 
   return { userData, token };
 };
